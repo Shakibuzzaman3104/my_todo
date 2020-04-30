@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mynotes/views/main_view.dart';
+import 'package:mynotes/screens/views/main_view.dart';
+
 
 void main() => runApp(MyApp());
 

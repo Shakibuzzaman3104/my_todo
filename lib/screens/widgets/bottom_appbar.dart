@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mynotes/views/view_checklist.dart';
-import 'package:mynotes/views/view_notes.dart';
+import 'package:mynotes/screens/views/view_checklist.dart';
+import 'package:mynotes/screens/views/view_notes.dart';
 
 class WidgetBottomNavBar extends StatefulWidget {
   @override
@@ -34,12 +34,21 @@ class _WidgetBottomNavBarState extends State<WidgetBottomNavBar> {
           Container(
             margin: EdgeInsets.only(top: 16, left: 16),
             alignment: Alignment.topLeft,
-            child: Text(
-              _pages[_selectedPageIndex]["title"],
-              style: TextStyle(
-                color: Colors.blue,
-                fontSize: 40,
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  _pages[_selectedPageIndex]["title"],
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 40,
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.add),
+                  onPressed: () {},
+                )
+              ],
             ),
           ),
           _pages[_selectedPageIndex]['page'],

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mynotes/utils/route_constants.dart';
-import 'package:mynotes/views/main_view.dart';
-import 'package:mynotes/views/view_checklist_details.dart';
-import 'package:mynotes/views/view_notes_details.dart';
+import 'screens/views/main_view.dart';
+import 'screens/views/view_checklist_details.dart';
+import 'screens/views/view_notes_details.dart';
+
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
