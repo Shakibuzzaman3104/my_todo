@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mynotes/screens/views/settings_view.dart';
 import 'package:mynotes/screens/views/view_checklist.dart';
 import 'package:mynotes/screens/views/view_notes.dart';
+import 'package:mynotes/utils/colors_constants.dart';
 
 class WidgetBottomNavBar extends StatefulWidget {
   @override
@@ -26,48 +28,38 @@ class _WidgetBottomNavBarState extends State<WidgetBottomNavBar> {
     });
   }
 
+  void _settings() {
+    print("Settings Clicked");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(top: 16, left: 16),
-            alignment: Alignment.topLeft,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  _pages[_selectedPageIndex]["title"],
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 40,
-                  ),
-                ),
-                IconButton(
-                  icon: Icon(Icons.add),
-                  onPressed: () {},
-                )
-              ],
-            ),
-          ),
-          _pages[_selectedPageIndex]['page'],
-        ],
-      ),
+      backgroundColor: Colors.white,
+      body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
-        onTap: _selectPage,
-        backgroundColor: Theme.of(context).accentColor,
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Theme.of(context).accentColor,
+        onTap: (index) {
+          return index < 2 ? _selectPage(index) : _settings();
+        },
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        elevation: 0,
+        backgroundColor: ColorConstants.TAB_COLOR,
+        unselectedItemColor: Colors.blueGrey,
+        selectedItemColor:ColorConstants.BUTTON_COLOR,
         currentIndex: _selectedPageIndex,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.category),
+            icon: Icon(Icons.note),
             title: Text('Categories'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.star),
+            icon: Icon(Icons.shopping_basket),
             title: Text('Favorites'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            title: Text('Settings'),
           ),
         ],
       ),
